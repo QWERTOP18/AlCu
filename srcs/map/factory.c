@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   factory.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 11:45:45 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 21:33:48 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:45:11 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,13 @@ t_map	*map_factory(void)
 		return (NULL);
 	map_zero(map);
 	line = get_next_line(STDIN_FILENO);
-	while (line != NULL)
+	while (line != NULL && line [0] != '\n' && line[0] != '\0')
 	{
 		map->errno |= add_line(map, lib_atoi(line));
 		free(line);
 		line = get_next_line(STDIN_FILENO);
 	}
+	free(line);
 	compute_should_ai_take_last(map);
 	return (map);
 }
