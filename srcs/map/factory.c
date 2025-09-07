@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   factory.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafujima <mafujima@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 11:45:45 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 18:55:01 by mafujima         ###   ########.fr       */
+/*   Updated: 2025/09/07 20:01:33 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void	map_zero(t_map *map)
 	i = 0;
 	while (i < MAX_MAP_HEIGHT)
 	{
+		map->should_ai_take_last[i] = false;
 		map->lines[i++] = 0;
 	}
 	map->max_width = 0;
@@ -57,5 +58,6 @@ t_map	*map_factory(void)
 		free(line);
 		line = get_next_line(STDIN_FILENO);
 	}
+	compute_should_ai_take_last(map);
 	return (map);
 }

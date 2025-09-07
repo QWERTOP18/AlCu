@@ -9,13 +9,15 @@ OBJDIR = obj
 LIBDIR = srcs/_lib
 GAMEDIR = srcs/game
 MAPDIR = srcs/map
+AIDIR = srcs/ai
 
 MAIN_SRC = $(SRCDIR)/main.c
 LIB_SRCS = $(LIBDIR)/get_next_line.c $(LIBDIR)/lib_atoi.c
 GAME_SRCS = $(GAMEDIR)/game_start.c $(GAMEDIR)/get_user_input.c $(GAMEDIR)/game_loop.c
 MAP_SRCS = $(MAPDIR)/factory.c $(MAPDIR)/console.c $(MAPDIR)/clear.c
+AI_SRCS = $(AIDIR)/compute_ai_move.c $(AIDIR)/compute_ai_should_take_last.c
 
-SRCS = $(MAIN_SRC) $(LIB_SRCS) $(GAME_SRCS) $(MAP_SRCS)
+SRCS = $(MAIN_SRC) $(LIB_SRCS) $(GAME_SRCS) $(MAP_SRCS) $(AI_SRCS)
 
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
@@ -27,7 +29,8 @@ $(OBJDIR):
 	mkdir -p $(OBJDIR)/$(LIBDIR)
 	mkdir -p $(OBJDIR)/$(GAMEDIR)
 	mkdir -p $(OBJDIR)/$(MAPDIR)
-
+	mkdir -p $(OBJDIR)/$(AIDIR)
+	
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
