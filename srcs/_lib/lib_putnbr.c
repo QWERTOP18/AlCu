@@ -3,28 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   lib_putnbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 21:22:13 by yui               #+#    #+#             */
-/*   Updated: 2025/09/07 21:23:32 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 21:30:07 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 
-void lib_putnbr(int n)
+void	lib_putnbr(int n)
 {
-    char c;
-    c = 0;
-    if (n == -2147483648){
-        write(1, "-2147483648", 11);
-        return ;
-    }
-    if (n < 0){
-        write(1, "-", 1);
-        n = -n;
-    }
-    if (n >= 10)
-        lib_putnbr(n / 10);
-    c = (n % 10) + '0';
-    write(1, &c, 1);
+	char	c;
+
+	c = 0;
+	if (n == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n = -n;
+	}
+	if (n >= 10)
+		lib_putnbr(n / 10);
+	c = (n % 10) + '0';
+	write(1, &c, 1);
 }

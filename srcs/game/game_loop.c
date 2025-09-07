@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 17:44:57 by mafujima          #+#    #+#             */
-/*   Updated: 2025/09/07 21:27:11 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 21:30:18 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,12 @@ bool	map_action(t_map *m, int value, t_player player)
 	if (value > m->lines[current_line])
 		return (false);
 	m->lines[current_line] -= value;
-
 	if (player == AI)
-    {
-		write(STDOUT_FILENO,"AI took ", 9);
-        lib_putnbr(value);
-        write(STDOUT_FILENO, "\n", 1);
-    }
+	{
+		write(STDOUT_FILENO, "AI took ", 9);
+		lib_putnbr(value);
+		write(STDOUT_FILENO, "\n", 1);
+	}
 	if (m->lines[current_line] == 0)
 		m->height--;
 	return (true);
