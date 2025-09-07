@@ -1,7 +1,7 @@
 #include "interface.h"
 
-void map_clear(t_map *m)
+void map_clear(t_map **m)
 {
-    free(m);
-    m = NULL;
+    free(*m);
+    *m = NULL;
 }

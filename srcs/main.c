@@ -6,7 +6,7 @@
 /*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 23:58:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 15:09:58 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 15:22:44 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(void)
 	game_start(map);
 	if (map->errno)
 		return (err(map));
-	map_clear(map);
+	map_clear(&map);
 	
 	return (EXIT_SUCCESS);
 }
@@ -38,7 +38,7 @@ static int err(t_map *m)
 	if (m)
 	{
 		status = m->errno;
-		map_clear(m);
+		map_clear(&m);
 	}
 	write(STDERR_FILENO, ERRMSG, ERRMSG_LEN);
 	return (status);
