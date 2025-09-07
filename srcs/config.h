@@ -6,7 +6,7 @@
 /*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 13:04:08 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 14:36:50 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 14:59:14 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define MAX_LINE_VALUE 10000
 
 
-# define ERR_INVALID_INPUT 0b1
-# define ERR_MAP_TOO_LARGE 0b10
+# define ERR_INVALID_INPUT 0b10
+# define ERR_MAP_TOO_LARGE 0b100
 
 #endif
