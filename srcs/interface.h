@@ -6,7 +6,7 @@
 /*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 11:47:14 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 14:37:01 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 14:52:33 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ typedef struct s_map
 }						t_map;
 
 t_map					*map_factory(void);
+void 					map_clear(t_map *m);	
 void					console_map(t_map *m);
+
+void					game_start(t_map *m);
 
 #endif

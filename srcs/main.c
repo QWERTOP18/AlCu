@@ -6,7 +6,7 @@
 /*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 23:58:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 14:42:29 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 14:54:31 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,24 @@ int	main(void)
 	map = map_factory();
 
 	if (!map || map->errno)
-	{
 		return (err(map));
-	}
-	console_map(map);
+		
+	game_start(map);
+	if (map->errno)
+		return (err(map));
+	map_clear(map);
+	
 	return (EXIT_SUCCESS);
 }
 
-static int err(t_map *map)
+static int err(t_map *m)
 {
 	int status;
 	status = EXIT_FAILURE;
-	if (map)
+	if (m)
 	{
-		status = map->errno;
-		free(map);
+		status = m->errno;
+		map_clear(m);
 	}
 	write(STDERR_FILENO, "Error\n", 6);
 	return (status);

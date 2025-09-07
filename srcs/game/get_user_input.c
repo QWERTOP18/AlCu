@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_user_input.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 13:02:47 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/06 13:46:33 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/09/07 14:50:03 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
 #include "interface.h"
-#include "lib.h"
 
 int	get_user_input(void)
 {

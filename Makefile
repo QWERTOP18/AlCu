@@ -2,27 +2,31 @@ NAME = alum1
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
-INCLUDES = -I./srcs -I./srcs/lib
+INCLUDES = -I./srcs -I./srcs/_lib
 
 SRCDIR = srcs
 OBJDIR = obj
-LIBDIR = srcs/lib
-PRESDIR = srcs/presentation
+LIBDIR = srcs/_lib
+GAMEDIR = srcs/game
+MAPDIR = srcs/map
 
 MAIN_SRC = $(SRCDIR)/main.c
 LIB_SRCS = $(LIBDIR)/get_next_line.c $(LIBDIR)/lib_atoi.c
-PRES_SRCS = $(PRESDIR)/factory.c $(PRESDIR)/console.c $(PRESDIR)/get_user_input.c
+GAME_SRCS = $(GAMEDIR)/game_start.c $(GAMEDIR)/get_user_input.c
+MAP_SRCS = $(MAPDIR)/factory.c $(MAPDIR)/console.c $(MAPDIR)/clear.c
 
-SRCS = $(MAIN_SRC) $(LIB_SRCS) $(PRES_SRCS)
+SRCS = $(MAIN_SRC) $(LIB_SRCS) $(GAME_SRCS) $(MAP_SRCS)
 
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
+.PHONY: all
 all: $(NAME)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)/$(SRCDIR)
 	mkdir -p $(OBJDIR)/$(LIBDIR)
-	mkdir -p $(OBJDIR)/$(PRESDIR)
+	mkdir -p $(OBJDIR)/$(GAMEDIR)
+	mkdir -p $(OBJDIR)/$(MAPDIR)
 
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
@@ -40,7 +44,6 @@ fclean: clean
 
 .PHONY: re
 re: fclean all
-
 
 .PHONY: run
 run: all
