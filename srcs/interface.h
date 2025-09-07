@@ -6,7 +6,7 @@
 /*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 11:47:14 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 16:16:30 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 18:37:18 by mafujima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <unistd.h>
 # include <stdbool.h>
 
-
 typedef enum e_player
 {
 	PLAYER_NONE = 0,
@@ -27,22 +26,18 @@ typedef enum e_player
 	AI = 2,
 }				t_player;
 
-
 // errnoはbit和を取る予定
 typedef struct s_map
 {
 	int					errno;
 	int					max_width;
 	int					height;
-	t_player 				winner;
-
-	int lines[MAX_MAP_HEIGHT];
+	t_player			winner;
+	int					lines[MAX_MAP_HEIGHT];
 }						t_map;
 
 t_map					*map_factory(void);
-void 					map_clear(t_map **m);	
+void					map_clear(t_map **m);
 void					console_map(t_map *m);
-
 void					game_start(t_map *m);
-
 #endif

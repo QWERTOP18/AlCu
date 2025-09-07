@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   lib_atoi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mafujima <mafujima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 12:03:35 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 14:10:55 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 18:59:49 by mafujima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
+
 int	lib_atoi(const char *s)
 {
 	return (atoi(s));

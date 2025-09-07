@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mafujima <mafujima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 23:58:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 15:22:44 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 19:02:25 by mafujima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,19 @@ int	main(void)
 	t_map	*map;
 
 	map = map_factory();
-
 	if (!map || map->errno)
 		return (err(map));
-		
 	game_start(map);
 	if (map->errno)
 		return (err(map));
 	map_clear(&map);
-	
 	return (EXIT_SUCCESS);
 }
 
-static int err(t_map *m)
+static int	err(t_map *m)
 {
-	int status;
+	int	status;
+
 	status = EXIT_FAILURE;
 	if (m)
 	{

@@ -6,7 +6,7 @@
 /*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 13:04:08 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 16:57:51 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 18:39:26 by mafujima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,10 @@
 # define MAX_MAP_HEIGHT 1024
 # define MAX_LINE_VALUE 10000
 
-
 # define ERR_INVALID_INPUT 0b10
 # define ERR_MAP_TOO_LARGE 0b100
 # define ERR_FATAL 0b1000
 # define ERR_AI_MOVE 0b10000
-
-
 
 # define WINMSG "You are the winner! Congratulations!\n"
 # define WINMSG_LEN 37
@@ -35,5 +32,4 @@
 
 # define ERRMSG "Error\n"
 # define ERRMSG_LEN 6
-
 #endif

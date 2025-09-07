@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   lib.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mafujima <mafujima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 12:02:16 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 14:32:54 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 19:09:23 by mafujima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_H
-#define LIB_H
+# define LIB_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+# include "get_next_line.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-#include "get_next_line.h"
-
-int lib_atoi(const char *s);
+int	lib_atoi(const char *s);
 
 #endif
