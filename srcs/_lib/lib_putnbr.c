@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   lib_putnbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 12:02:16 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 21:22:08 by yui              ###   ########.fr       */
+/*   Created: 2025/09/07 21:22:13 by yui               #+#    #+#             */
+/*   Updated: 2025/09/07 21:23:32 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
 
-# include "get_next_line.h"
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-int	lib_atoi(const char *s);
-void lib_putnbr(int n);
-
-#endif
+void lib_putnbr(int n)
+{
+    char c;
+    c = 0;
+    if (n == -2147483648){
+        write(1, "-2147483648", 11);
+        return ;
+    }
+    if (n < 0){
+        write(1, "-", 1);
+        n = -n;
+    }
+    if (n >= 10)
+        lib_putnbr(n / 10);
+    c = (n % 10) + '0';
+    write(1, &c, 1);
+}
