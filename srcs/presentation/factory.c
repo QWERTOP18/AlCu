@@ -3,24 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   factory.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 11:45:45 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/06 14:05:59 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/09/07 14:30:31 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 
-int	add_line(t_map *map, int line_value)
+static int	add_line(t_map *map, int line_value)
 {
 
-
-	if (line_value < 0)
+	if (map->height >= MAX_MAP_HEIGHT)
 	{
-		map->errno |= ERR_INVALID_INPUT;
+		return (ERR_MAP_TOO_LARGE);
 	}
+	
+	if (line_value < 0 || line_value > MAX_LINE_VALUE)
+	{
+		return  ERR_INVALID_INPUT;
+	}
+	
 	map->lines[map->height++] = line_value;
+	return (0);
 }
 
 t_map	*map_factory(void)
@@ -33,12 +39,12 @@ t_map	*map_factory(void)
 		return (NULL);
 	map->height = 0;
 	line = get_next_line(STDIN_FILENO);
-	printf("%s", line);
 	while (line != NULL)
 	{
+		map->errno |= add_line(map, lib_atoi(line));
 		free(line);
 		line = get_next_line(STDIN_FILENO);
-		add_line(map, lib_atoi(line));
 	}
-	return (NULL);
+	
+	return (map);
 }

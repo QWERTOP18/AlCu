@@ -1,4 +1,4 @@
 .vscode
 *.json
-
-
+*.o
+alum1
