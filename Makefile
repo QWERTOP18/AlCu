@@ -51,3 +51,7 @@ re: fclean all
 .PHONY: run
 run: all
 	./$(NAME) < map/alcu.map
+
+.PHONY: func
+func: all
+	nm -u $(NAME) | sort | uniq

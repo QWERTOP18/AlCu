@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 17:44:57 by mafujima          #+#    #+#             */
-/*   Updated: 2025/09/07 19:47:43 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 21:09:25 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ bool	map_action(t_map *m, int value, t_player player)
 void	ai_move(t_map *m)
 {
 	console_map(m);
-
 	if (map_action(m, compute_ai_move(m), AI) == false)
 		m->errno |= ERR_AI_MOVE;
 }
