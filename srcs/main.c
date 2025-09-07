@@ -3,36 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 23:58:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/06 00:35:45 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/09/07 15:22:44 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "interface.h"
 
-typedef void	t_map;
-typedef void	line;
-
-t_map	*parse_map(void)
-{
-	char	*line;
-
-	line = get_next_line(STDIN_FILENO);
-	printf("%s", line);
-	while (line != NULL)
-	{
-		line = get_next_line(STDIN_FILENO);
-		printf("%sj", line);
-	}
-	return (NULL);
-}
+static int	err(t_map *map);
 
 int	main(void)
 {
 	t_map	*map;
 
-	map = parse_map();
-	return (0);
+	map = map_factory();
+
+	if (!map || map->errno)
+		return (err(map));
+		
+	game_start(map);
+	if (map->errno)
+		return (err(map));
+	map_clear(&map);
+	
+	return (EXIT_SUCCESS);
+}
+
+static int err(t_map *m)
+{
+	int status;
+	status = EXIT_FAILURE;
+	if (m)
+	{
+		status = m->errno;
+		map_clear(&m);
+	}
+	write(STDERR_FILENO, ERRMSG, ERRMSG_LEN);
+	return (status);
 }
