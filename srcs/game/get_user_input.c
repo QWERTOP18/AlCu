@@ -6,22 +6,36 @@
 /*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 13:02:47 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 15:23:19 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 16:08:39 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "interface.h"
+#include "game.h"
 
 int	get_user_input(void)
 {
 	char	*line;
 	int		value;
 
-	line = get_next_line(STDIN_FILENO);
-	if (!line)
-		return (INVALID_NUMBER);
-	value = lib_atoi(line);
-	if (value < 1 || value > MAX_INPUT_NUMBER)
-		return (INVALID_NUMBER);
+	value = 0;
+	line = NULL;
+	int fd = open("/dev/tty", O_RDONLY);
+	if (fd == -1)
+		return (-ERR_FATAL);
+	while(1)
+	{
+		write(STDERR_FILENO, INPUT_MSG, INPUT_MSG_LEN);
+		line = get_next_line(fd);
+		if (!line)
+		return (close(fd), -ERR_FATAL);
+		value = lib_atoi(line);
+		free(line);
+		if (value > 0 &&  value <= MAX_INPUT_NUMBER)
+		{
+			break;
+		}
+		write(STDERR_FILENO, INPUT_ERR_MSG, INPUT_ERR_MSG_LEN);
+	}
+	close(fd);
 	return (value);
 }

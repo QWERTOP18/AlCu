@@ -1,22 +1,85 @@
 #include "game.h"
 
-void  game_loop(t_map *m){
-    m->height--; // Dummy operation to simulate game progress
-    // int user_input;
-    // int game_over = 0;
+bool map_action(t_map *m, int value, t_player player)
+{
+    int current_line;
+    
+    // 現在の行（最後の行）を取得
+    if (m->height == 0)
+        return false;
+    
+    current_line = m->height - 1;
+    
+    // 入力値の検証
+    if (value < 1 || value > MAX_INPUT_NUMBER)
+        return false;
+    
+    if (value > m->lines[current_line])
+        return false;
+    
+    // アイテムを削除
+    m->lines[current_line] -= value;
+    
+    // プレイヤーの動作を表示
+    if (player == PLAYER)
+        printf("%d\n", value);
+    else if (player == AI)
+        printf("AI took %d\n", value);
+    
+    // 行が空になったら削除
+    if (m->lines[current_line] == 0)
+    {
+        m->height--;
+    }
+    
+    return true;
+}
 
-    // while (!game_over){
-    //     user_input = get_user_input();
-    //     if (user_input == INVALID_NUMBER){
-    //         m->errno |= ERR_INVALID_INPUT;
-    //         break;
-    //     }
-    //     // Process user input and update game state
-    //     // For example, remove lines from the map based on user input
-    //     // Check for game over condition
-    //     if (m->height <= 0){
-    //         game_over = 1;
-    //         printf("Game Over! You win!\n");
-    //     }
-    // }
+
+void ai_move(t_map *m)
+{
+    console_map(m);
+    if (map_action(m, 1, AI) == false)
+        m->errno |= ERR_AI_MOVE;
+}
+
+void player_move(t_map *m)
+{
+    console_map(m);
+    int value;
+    value = 0;
+
+    while (1){
+
+        value = get_user_input();
+        if (value == -ERR_FATAL)
+        {
+            m->errno |= ERR_FATAL;
+            return;
+        }
+        
+        if (map_action(m, value, PLAYER))
+            return;
+		write(STDERR_FILENO, INPUT_ERR_MSG, INPUT_ERR_MSG_LEN);
+    }
+}
+
+int check_game_over(t_map *m)
+{
+    if (m->height == 0)
+        return (1);
+    return (0);
+}   
+
+
+void  consume_turn(t_map *m)
+{
+    ai_move(m);
+    if (check_game_over(m))
+        m->winner = PLAYER;
+    if (m->winner || m->errno)
+        return ;
+    player_move(m);
+    if (check_game_over(m))
+        m->winner = AI;
 }

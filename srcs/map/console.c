@@ -3,14 +3,19 @@
 void	console_map(t_map *m)
 {
 	int	i;
+	int	j;
+	
 	i = 0;
 	while (i < m->height)
 	{
-		printf("line: %d\n", m->lines[i]);
-
+		j = 0;
+		while (j < m->lines[i])
+		{
+			printf("| ");
+			j++;
+		}
+		printf("\n");
 		i++;
 	}
-	printf("height: %d\n", m->height);
-	printf("errno: %d\n\n", m->errno);
 	return ;
 }
