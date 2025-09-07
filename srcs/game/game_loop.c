@@ -1,22 +1,42 @@
 #include "game.h"
 
-void  game_loop(t_map *m){
-    m->height--; // Dummy operation to simulate game progress
-    // int user_input;
-    // int game_over = 0;
+void ai_move(t_map *m)
+{
+    (void)m;
+}
 
-    // while (!game_over){
-    //     user_input = get_user_input();
-    //     if (user_input == INVALID_NUMBER){
-    //         m->errno |= ERR_INVALID_INPUT;
-    //         break;
-    //     }
-    //     // Process user input and update game state
-    //     // For example, remove lines from the map based on user input
-    //     // Check for game over condition
-    //     if (m->height <= 0){
-    //         game_over = 1;
-    //         printf("Game Over! You win!\n");
-    //     }
-    // }
+void player_move(t_map *m)
+{
+    int value;
+    value = 0;
+
+
+    value = get_user_input();
+    if (value == -ERR_FATAL)
+    {
+        m->errno |= ERR_FATAL;
+        return;
+    }
+
+
+}
+
+int check_game_over(t_map *m)
+{
+    if (m->height == 0)
+        return (1);
+    return (0);
+}   
+
+
+void  consume_turn(t_map *m)
+{
+    ai_move(m);
+    if (check_game_over(m))
+        m->winner = AI;
+    if (m->winner || m->errno)
+        return ;
+    player_move(m);
+    if (check_game_over(m))
+        m->winner = PLAYER; 
 }

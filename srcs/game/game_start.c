@@ -2,12 +2,12 @@
 
 void  game_start(t_map *m)
 {
-    while(m->height > 0)
+    while(m->winner == PLAYER_NONE)
     {
         if (m->errno)
             return ;
         console_map(m);
-        game_loop(m);
+        consume_turn(m);
     }
 
     if (m->winner == PLAYER)
