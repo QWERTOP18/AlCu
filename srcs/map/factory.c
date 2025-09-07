@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   factory.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 11:45:45 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 20:01:33 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 21:33:48 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	add_line(t_map *map, int line_value)
 	{
 		return (ERR_MAP_TOO_LARGE);
 	}
-	if (line_value < 0 || line_value > MAX_LINE_VALUE)
+	if (line_value <= 0 || line_value > MAX_LINE_VALUE)
 	{
 		return (ERR_INVALID_INPUT);
 	}
