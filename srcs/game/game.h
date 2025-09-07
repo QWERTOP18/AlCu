@@ -2,7 +2,7 @@
 #define GAME_H
 
 #include "interface.h"
-# include "fcntl.h"
+# include <fcntl.h>
 
 void consume_turn(t_map *m);
 int get_user_input(void);

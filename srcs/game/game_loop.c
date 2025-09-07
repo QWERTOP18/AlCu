@@ -28,9 +28,8 @@ void player_move(t_map *m)
         }
         
         if (map_action(m, value))
-        {
             return;
-        }
+		write(STDERR_FILENO, INPUT_ERR_MSG, INPUT_ERR_MSG_LEN);
     }
 }
 
