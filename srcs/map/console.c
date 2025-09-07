@@ -11,6 +11,6 @@ void	console_map(t_map *m)
 		i++;
 	}
 	printf("height: %d\n", m->height);
-	printf("errno: %d\n", m->errno);
+	printf("errno: %d\n\n", m->errno);
 	return ;
 }

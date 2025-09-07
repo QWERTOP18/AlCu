@@ -6,7 +6,7 @@
 /*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 23:58:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 14:54:31 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 15:09:58 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ static int err(t_map *m)
 		status = m->errno;
 		map_clear(m);
 	}
-	write(STDERR_FILENO, "Error\n", 6);
+	write(STDERR_FILENO, ERRMSG, ERRMSG_LEN);
 	return (status);
 }

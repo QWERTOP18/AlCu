@@ -6,7 +6,7 @@
 /*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 13:04:08 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 14:59:14 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 15:11:57 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,19 @@
 
 # define ERR_INVALID_INPUT 0b10
 # define ERR_MAP_TOO_LARGE 0b100
+
+
+
+
+
+
+# define WINMSG "You are the winner! Congratulations!\n"
+# define WINMSG_LEN 37
+
+# define LOSEMSG "Game Over! Revenge again!\n"
+# define LOSEMSG_LEN 26
+
+# define ERRMSG "Error\n"
+# define ERRMSG_LEN 6
 
 #endif

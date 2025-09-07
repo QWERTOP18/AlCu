@@ -12,7 +12,7 @@ MAPDIR = srcs/map
 
 MAIN_SRC = $(SRCDIR)/main.c
 LIB_SRCS = $(LIBDIR)/get_next_line.c $(LIBDIR)/lib_atoi.c
-GAME_SRCS = $(GAMEDIR)/game_start.c $(GAMEDIR)/get_user_input.c
+GAME_SRCS = $(GAMEDIR)/game_start.c $(GAMEDIR)/get_user_input.c $(GAMEDIR)/game_loop.c
 MAP_SRCS = $(MAPDIR)/factory.c $(MAPDIR)/console.c $(MAPDIR)/clear.c
 
 SRCS = $(MAIN_SRC) $(LIB_SRCS) $(GAME_SRCS) $(MAP_SRCS)
