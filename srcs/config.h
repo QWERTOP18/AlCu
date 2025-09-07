@@ -6,7 +6,7 @@
 /*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 13:04:08 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 18:39:26 by mafujima         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:46:06 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define WINMSG_LEN 37
 
 # define LOSEMSG "Game Over! Revenge again!\n"
-# define LOSEMSG_LEN 26
+# define LOSEMSG_LEN 27
 
 # define ERRMSG "Error\n"
 # define ERRMSG_LEN 6

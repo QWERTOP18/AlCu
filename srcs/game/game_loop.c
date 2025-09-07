@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafujima <mafujima@student.42tokyo.jp      +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 17:44:57 by mafujima          #+#    #+#             */
-/*   Updated: 2025/09/07 18:20:25 by mafujima         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:30:18 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@ bool	map_action(t_map *m, int value, t_player player)
 	if (value > m->lines[current_line])
 		return (false);
 	m->lines[current_line] -= value;
-	if (player == PLAYER)
-		printf("%d\n", value);
-	else if (player == AI)
-		printf("AI took %d\n", value);
-	if (m->lines[current_line] == 0)
+	if (player == AI)
 	{
-		m->height--;
+		write(STDOUT_FILENO, "AI took ", 9);
+		lib_putnbr(value);
+		write(STDOUT_FILENO, "\n", 1);
 	}
+	if (m->lines[current_line] == 0)
+		m->height--;
 	return (true);
 }
 
 void	ai_move(t_map *m)
 {
 	console_map(m);
-	if (map_action(m, 1, AI) == false)
+	if (map_action(m, compute_ai_move(m), AI) == false)
 		m->errno |= ERR_AI_MOVE;
 }
 

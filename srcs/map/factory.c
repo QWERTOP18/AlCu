@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   factory.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafujima <mafujima@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 11:45:45 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 18:55:01 by mafujima         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:45:11 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	add_line(t_map *map, int line_value)
 	{
 		return (ERR_MAP_TOO_LARGE);
 	}
-	if (line_value < 0 || line_value > MAX_LINE_VALUE)
+	if (line_value <= 0 || line_value > MAX_LINE_VALUE)
 	{
 		return (ERR_INVALID_INPUT);
 	}
@@ -33,6 +33,7 @@ static void	map_zero(t_map *map)
 	i = 0;
 	while (i < MAX_MAP_HEIGHT)
 	{
+		map->should_ai_take_last[i] = false;
 		map->lines[i++] = 0;
 	}
 	map->max_width = 0;
@@ -51,11 +52,13 @@ t_map	*map_factory(void)
 		return (NULL);
 	map_zero(map);
 	line = get_next_line(STDIN_FILENO);
-	while (line != NULL)
+	while (line != NULL && line [0] != '\n' && line[0] != '\0')
 	{
 		map->errno |= add_line(map, lib_atoi(line));
 		free(line);
 		line = get_next_line(STDIN_FILENO);
 	}
+	free(line);
+	compute_should_ai_take_last(map);
 	return (map);
 }

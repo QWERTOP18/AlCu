@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 11:47:14 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 18:37:18 by mafujima         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:09:17 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include "config.h"
 # include "lib.h"
+# include <stdbool.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdbool.h>
 
 typedef enum e_player
 {
@@ -26,18 +26,22 @@ typedef enum e_player
 	AI = 2,
 }				t_player;
 
-// errnoはbit和を取る予定
 typedef struct s_map
 {
-	int					errno;
-	int					max_width;
-	int					height;
-	t_player			winner;
-	int					lines[MAX_MAP_HEIGHT];
-}						t_map;
+	int			errno;
+	int			max_width;
+	int			height;
+	t_player	winner;
+	int			lines[MAX_MAP_HEIGHT];
+	bool		should_ai_take_last[MAX_MAP_HEIGHT];
+}				t_map;
 
-t_map					*map_factory(void);
-void					map_clear(t_map **m);
-void					console_map(t_map *m);
-void					game_start(t_map *m);
+t_map			*map_factory(void);
+void			map_clear(t_map **m);
+void			console_map(t_map *m);
+void			game_start(t_map *m);
+
+int				compute_ai_move(t_map *m);
+void			compute_should_ai_take_last(t_map *m);
+
 #endif

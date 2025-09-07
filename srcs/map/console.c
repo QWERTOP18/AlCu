@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   console.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafujima <mafujima@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 18:59:00 by mafujima          #+#    #+#             */
-/*   Updated: 2025/09/07 18:59:02 by mafujima         ###   ########.fr       */
+/*   Updated: 2025/09/07 20:24:01 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	console_map(t_map *m)
 		j = 0;
 		while (j < m->lines[i])
 		{
-			printf("| ");
+			write(STDOUT_FILENO, "| ", 2);
 			j++;
 		}
-		printf("\n");
+		write(STDOUT_FILENO, "\n", 1);
 		i++;
 	}
 	return ;
