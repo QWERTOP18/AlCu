@@ -6,7 +6,7 @@
 /*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 11:47:14 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 15:22:14 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 16:16:30 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "lib.h"
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 
 typedef enum e_player
