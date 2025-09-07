@@ -6,7 +6,6 @@ void  game_start(t_map *m)
     {
         if (m->errno)
             return ;
-        console_map(m);
         consume_turn(m);
     }
 
