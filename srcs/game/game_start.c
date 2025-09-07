@@ -10,6 +10,8 @@ void  game_start(t_map *m)
         game_loop(m);
     }
 
-    write(STDOUT_FILENO, WINMSG,WINMSG_LEN);
-    write(STDOUT_FILENO, LOSEMSG,LOSEMSG_LEN);
+    if (m->winner == PLAYER)
+        write(STDOUT_FILENO, WINMSG,WINMSG_LEN);
+    else if (m->winner == AI)
+        write(STDOUT_FILENO, LOSEMSG,LOSEMSG_LEN);
 }

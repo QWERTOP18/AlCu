@@ -1,4 +1,4 @@
-#include "interface.h"
+#include "game.h"
 
 void  game_loop(t_map *m){
     m->height--; // Dummy operation to simulate game progress

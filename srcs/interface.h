@@ -6,7 +6,7 @@
 /*   By: yui <yui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 11:47:14 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/09/07 14:52:33 by yui              ###   ########.fr       */
+/*   Updated: 2025/09/07 15:15:42 by yui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,21 @@
 # include <unistd.h>
 
 
+typedef enum e_player
+{
+	PLAYER_NONE = 0,
+	PLAYER = 1,
+	AI = 2,
+}				t_player;
+
+
 // errnoはbit和を取る予定
 typedef struct s_map
 {
 	int					errno;
 	int					max_width;
 	int					height;
+	t_player 				winner;
 
 	int lines[MAX_MAP_HEIGHT];
 }						t_map;
